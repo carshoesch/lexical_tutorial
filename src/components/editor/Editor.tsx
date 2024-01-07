@@ -10,7 +10,7 @@ import {Box} from "@mui/material";
 // @ts-ignore
 import Toolbar from "../toolbar/Toolbar.tsx";
 import {RichTextPlugin} from "@lexical/react/LexicalRichTextPlugin";
-import theme from '../../theme/lexicalEditorTheme'
+import lexicalEditorConfig from './editorConfig'
 
 // Lexical React plugins are React components, which makes them
 // highly composable. Furthermore, you can lazy load plugins if
@@ -37,22 +37,10 @@ function onChange(editorState) {
     });
 }
 
-// Catch any errors that occur during Lexical updates and log them
-// or throw them as needed. If you don't throw them, Lexical will
-// try to recover gracefully without losing user data.
-const onError = (error) => {
-    console.error(error);
-}
-
 const Editor = () => {
-    const initialConfig = {
-        namespace: 'MyEditor',
-        theme: theme,
-        onError,
-    };
 
     return (
-        <LexicalComposer initialConfig={initialConfig}>
+        <LexicalComposer initialConfig={lexicalEditorConfig}>
             <Toolbar />
             <Box sx={{position: "relative", background: "#fafafa", mt: 1, borderRadius: "5px"}}>
                 <RichTextPlugin
