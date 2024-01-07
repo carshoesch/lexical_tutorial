@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import {CssBaseline, Grid, ThemeProvider, Typography} from "@mui/material";
+import Editor from "./components/editor/Editor.tsx";
+import theme from "./theme";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (
+        <ThemeProvider theme={theme}>
+            <CssBaseline/>
+            <Grid container sx={{minHeight: "100vh"}} justifyContent="center" alignItems="center" flexDirection="column">
+                <Grid item>
+                    <Typography variant="h3" sx={{mb: 1}}>Lexical Editor App</Typography>
+                </Grid>
+                <Grid item xs={9} sx={{width: "100%"}}>
+                    <Editor />
+                </Grid>
+            </Grid>
+        </ThemeProvider>
+    );
 }
 
 export default App;
